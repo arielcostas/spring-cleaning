@@ -2,11 +2,9 @@ package dev.costas.librosautor.infra.persistors;
 
 import dev.costas.librosautor.adapter.persist.AutorPersistor;
 import dev.costas.librosautor.core.domain.Autor;
-import dev.costas.librosautor.infra.jpa.entity.AutorJPA;
 import dev.costas.librosautor.infra.neo.dao.AutorNeoRepository;
 import dev.costas.librosautor.infra.neo.entity.AutorNeo;
 import org.springframework.context.annotation.Profile;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,12 +20,19 @@ public class AutorNeoPersistor implements AutorPersistor {
 
 	@Override
 	public List<Autor> findAll(int limit, int page) {
-		Pageable pageable = Pageable.ofSize(limit).withPage(page);
 		return autorNeoRepository
-				.findAll(pageable)
+				.findPage(limit, page * limit)
 				.stream()
 				.map(AutorNeo::to)
 				.toList();
+	}
+
+	@Override
+	public Autor findById(long id) {
+		return autorNeoRepository
+				.findById(id)
+				.map(AutorNeo::to)
+				.orElseThrow();
 	}
 
 	@Override

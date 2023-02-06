@@ -1,4 +1,4 @@
-package dev.costas.librosautor.io;
+package dev.costas.librosautor.infra.params;
 
 public class PageParams {
 	private Integer limit = 10;

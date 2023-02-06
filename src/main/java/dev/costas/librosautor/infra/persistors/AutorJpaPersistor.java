@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @Profile("jpa")
@@ -26,6 +27,14 @@ public class AutorJpaPersistor implements AutorPersistor {
 				.stream()
 				.map(AutorJPA::to)
 				.toList();
+	}
+
+	@Override
+	public Autor findById(long id) {
+		return autorJpaRepository
+				.findById(id)
+				.map(AutorJPA::to)
+				.orElseThrow();
 	}
 
 	public Autor persist(Autor autor) {

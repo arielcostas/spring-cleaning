@@ -1,4 +1,4 @@
-package dev.costas.librosautor.io;
+package dev.costas.librosautor.infra.params;
 
 import dev.costas.librosautor.core.domain.Autor;
 

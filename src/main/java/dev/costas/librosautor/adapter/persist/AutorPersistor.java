@@ -7,5 +7,7 @@ import java.util.List;
 public interface AutorPersistor {
 	List<Autor> findAll(int limit, int page);
 
+	Autor findById(long id);
+
 	Autor persist(Autor autor);
 }
