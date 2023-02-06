@@ -1,4 +1,4 @@
-package dev.costas.librosautor.infra.entity;
+package dev.costas.librosautor.infra.jpa.entity;
 
 import dev.costas.librosautor.core.domain.Libro;
 import jakarta.persistence.Entity;

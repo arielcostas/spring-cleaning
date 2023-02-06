@@ -1,7 +1,9 @@
-package dev.costas.librosautor.infra.entity;
+package dev.costas.librosautor.infra.jpa.entity;
 
 import dev.costas.librosautor.core.domain.Autor;
 import dev.costas.librosautor.core.domain.Libro;
+import dev.costas.librosautor.infra.neo.entity.AutorNeo;
+import dev.costas.librosautor.infra.neo.entity.LibroNeo;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;

@@ -13,16 +13,16 @@ import java.util.List;
 
 @Service
 public class AutorService implements NuevoAutorUseCase, ListAutoresUseCase {
-	private final AutorPersistor autorPersistor;
+	private final AutorPersistor autorJpaPersistor;
 
-	public AutorService(AutorPersistor autorPersistor) {
-		this.autorPersistor = autorPersistor;
+	public AutorService(AutorPersistor autorJpaPersistor) {
+		this.autorJpaPersistor = autorJpaPersistor;
 	}
 
 	@Override
 	public Autor nuevoAutor(NuevoAutorInput input) {
 		var autor = new Autor(null, input.nombre(), input.apellidos(), input.nacionalidad(), null);
-		return autorPersistor.persist(autor);
+		return autorJpaPersistor.persist(autor);
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class AutorService implements NuevoAutorUseCase, ListAutoresUseCase {
 		var page = pageParams.getPage();
 		if (page < 0) page = 0;
 
-		List<Autor> result =autorPersistor.findAll(limit, page);
+		List<Autor> result = autorJpaPersistor.findAll(limit, page);
 
 		return new ListAutoresOutput(
 				result.size(),
